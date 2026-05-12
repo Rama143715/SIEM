@@ -1,0 +1,10 @@
+{
+  "name": "siem-platform",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "up": "docker compose up -d",
+    "down": "docker compose down"
+  }
+}

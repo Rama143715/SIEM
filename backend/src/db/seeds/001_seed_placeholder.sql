@@ -1,0 +1,2 @@
+-- Optional SQL seed placeholder.
+-- Primary seeding is handled by backend/src/db/seed.js.
