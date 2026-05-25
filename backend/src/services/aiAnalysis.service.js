@@ -46,12 +46,170 @@ const userPrompts = {
   incident: "Investigate this incident and provide a full incident response report.",
 };
 
+const severityRank = {
+  CRITICAL: 4,
+  HIGH: 3,
+  MEDIUM: 2,
+  LOW: 1,
+  INFO: 0,
+};
+
+const techniqueHints = [
+  {
+    pattern: /mimikatz|sekurlsa|credential dump|credential dumping/i,
+    tactic: "Credential Access",
+    technique: "OS Credential Dumping",
+    id: "T1003",
+  },
+  {
+    pattern: /sql injection|union select|select .* from|waf blocked sqli/i,
+    tactic: "Initial Access",
+    technique: "Exploit Public-Facing Application",
+    id: "T1190",
+  },
+  {
+    pattern: /brute force|failed login|failed logon|failed to log on|account failed to log on|multiple failed|password spray|event_id"?\s*:\s*4625/i,
+    tactic: "Credential Access",
+    technique: "Brute Force",
+    id: "T1110",
+  },
+  {
+    pattern: /suspicious login|impossible travel|login success after failures/i,
+    tactic: "Initial Access",
+    technique: "Valid Accounts",
+    id: "T1078",
+  },
+  {
+    pattern: /powershell|encodedcommand|invoke-|downloadstring/i,
+    tactic: "Execution",
+    technique: "Command and Scripting Interpreter: PowerShell",
+    id: "T1059.001",
+  },
+  {
+    pattern: /c2|command and control|beacon|callback/i,
+    tactic: "Command and Control",
+    technique: "Application Layer Protocol",
+    id: "T1071",
+  },
+];
+
 function getTextContent(response) {
   if (!response?.content?.length) {
     return "No analysis output returned.";
   }
 
   return response.content.map((block) => block.text || "").join("\n");
+}
+
+function parseInputEvents(inputText) {
+  return inputText
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      try {
+        return JSON.parse(line);
+      } catch {
+        return { message: line, raw_log: line };
+      }
+    });
+}
+
+function uniqueValues(values) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function extractIps(text) {
+  return uniqueValues(text.match(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g) || []);
+}
+
+function getHighestSeverity(events) {
+  return events
+    .map((event) => String(event.severity || "INFO").toUpperCase())
+    .sort((a, b) => (severityRank[b] ?? 0) - (severityRank[a] ?? 0))[0] || "INFO";
+}
+
+function getTechniqueMatches(inputText) {
+  return techniqueHints.filter((hint) => hint.pattern.test(inputText));
+}
+
+function buildOfflineAnalysis({ analysisType, inputText }) {
+  const events = parseInputEvents(inputText);
+  const highestSeverity = getHighestSeverity(events);
+  const criticalCount = events.filter((event) => String(event.severity || "").toUpperCase() === "CRITICAL").length;
+  const highCount = events.filter((event) => String(event.severity || "").toUpperCase() === "HIGH").length;
+  const messages = events.map((event) => event.message || event.raw_log || JSON.stringify(event));
+  const ips = uniqueValues(events.flatMap((event) => [event.ip_src, event.ip_dst, ...extractIps(event.message || event.raw_log || "")]));
+  const users = uniqueValues(events.map((event) => event.user_name || event.user));
+  const hosts = uniqueValues(events.map((event) => event.host_name || event.host || event.hostname));
+  const categories = uniqueValues(events.map((event) => event.category));
+  const sources = uniqueValues(events.map((event) => event.source_name));
+  const techniques = getTechniqueMatches(inputText);
+  const topEvents = events
+    .slice()
+    .sort((a, b) => (severityRank[String(b.severity || "INFO").toUpperCase()] ?? 0) - (severityRank[String(a.severity || "INFO").toUpperCase()] ?? 0))
+    .slice(0, 5);
+
+  const likelyCompromise = highestSeverity === "CRITICAL" || criticalCount > 0;
+  const summary = likelyCompromise
+    ? `The submitted evidence contains ${criticalCount || highCount} high-priority event(s) and should be handled as an active security incident until contained. The strongest indicators point to ${techniques.map((item) => item.technique).join(", ") || "suspicious activity requiring analyst validation"}.`
+    : `The submitted evidence contains ${events.length} event(s) with highest severity ${highestSeverity}. No API key is configured, so this deterministic offline analysis highlights observable indicators and recommended triage steps.`;
+
+  const mitreRows = techniques.length
+    ? techniques.map((item) => `- ${item.tactic} -> ${item.technique} (${item.id})`).join("\n")
+    : "- No confident MITRE mapping detected from the submitted text.";
+
+  const findingRows = topEvents.length
+    ? topEvents
+        .map((event, index) => `- ${index + 1}. [${String(event.severity || "INFO").toUpperCase()}] ${event.message || event.raw_log || "Security event"}${event.host_name ? ` on ${event.host_name}` : ""}${event.user_name ? ` for user ${event.user_name}` : ""}`)
+        .join("\n")
+    : "- No parseable events were provided.";
+
+  const iocRows = [
+    ips.length ? `- IP addresses: ${ips.join(", ")}` : "- IP addresses: none observed",
+    users.length ? `- Users: ${users.join(", ")}` : "- Users: none observed",
+    hosts.length ? `- Hosts: ${hosts.join(", ")}` : "- Hosts: none observed",
+    sources.length ? `- Sources: ${sources.join(", ")}` : "- Sources: none observed",
+    categories.length ? `- Categories: ${categories.join(", ")}` : "- Categories: none observed",
+  ].join("\n");
+
+  return `## AI Analysis (Offline SOC Mode)
+
+Anthropic API key is not configured, so the platform generated deterministic SOC analysis from the submitted evidence.
+
+Requested analysis type: ${analysisType}
+
+## Executive Summary
+${summary}
+
+## Detailed Findings
+- Events reviewed: ${events.length}
+- Highest severity: ${highestSeverity}
+- Critical events: ${criticalCount}
+- High events: ${highCount}
+${findingRows}
+
+## MITRE ATT&CK Mapping
+${mitreRows}
+
+## Indicators of Compromise
+${iocRows}
+
+## Immediate Response Actions
+1. Isolate affected endpoint(s), especially ${hosts[0] || "the host(s) named in the alert"}, if credential theft or execution behavior is confirmed.
+2. Disable or reset credentials for ${users[0] || "affected user accounts"} and review recent authentication activity.
+3. Block or investigate external IPs ${ips.filter((ip) => !ip.startsWith("10.") && !ip.startsWith("192.168.") && !ip.startsWith("172.16.")).join(", ") || "identified in the evidence"}.
+4. Preserve related logs, EDR telemetry, process trees, and web/WAF request details for incident evidence.
+5. Escalate to incident response if the same host, user, or source appears across multiple alert categories.
+
+## Long-term Remediation Recommendations
+- Tune detection rules for repeated credential access, SQL injection, and suspicious login chains.
+- Enforce MFA and privileged access controls for sensitive users and systems.
+- Patch and harden public web applications, then validate WAF coverage with controlled tests.
+- Add endpoint containment and credential rotation steps to the incident runbook.
+
+## Confidence Score
+75% based on parsed fields, keyword detection, and severity context. Configure ANTHROPIC_API_KEY for model-assisted reasoning and richer narrative analysis.`;
 }
 
 async function saveAnalysis({ userId, analysisType, inputData, outputData, tokensUsed, relatedLogs, incidentId }) {
@@ -77,7 +235,7 @@ async function saveAnalysis({ userId, analysisType, inputData, outputData, token
 
 async function analyzeWithClaude({ analysisType, inputText, userId, relatedLogs = [], incidentId = null, model = "claude-sonnet-4-20250514" }) {
   if (!anthropic) {
-    const fallback = `## AI Analysis (Offline Mode)\n\nAnthropic API key is not configured.\n\nRequested analysis type: ${analysisType}\n\nInput length: ${inputText.length} characters.`;
+    const fallback = buildOfflineAnalysis({ analysisType, inputText });
 
     const saved = await saveAnalysis({
       userId,

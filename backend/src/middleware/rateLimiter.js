@@ -40,7 +40,7 @@ const ingestLimiter = createRedisRateLimiter({
   keyPrefix: "ingest",
   windowSeconds: 60,
   maxRequests: 1000,
-  keySelector: (request) => request.body.source_api_key || request.ip,
+  keySelector: (request) => request.get("x-siem-source-key") || request.body.source_api_key || request.ip,
   message: "Ingestion rate limit exceeded.",
 });
 

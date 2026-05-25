@@ -1,22 +1,22 @@
 import { useRef } from "react";
-import { useVirtual } from "react-virtual";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import LogRow from "./LogRow";
 
 export default function LogStream({ logs, selectedIds, onSelect }) {
   const parentRef = useRef(null);
-  const rowVirtualizer = useVirtual({
-    size: logs.length,
-    parentRef,
+  const rowVirtualizer = useVirtualizer({
+    count: logs.length,
+    getScrollElement: () => parentRef.current,
     estimateSize: () => 160,
     overscan: 8,
   });
 
-  const virtualRows = rowVirtualizer.virtualItems;
+  const virtualRows = rowVirtualizer.getVirtualItems();
 
   return (
     <div>
       <div ref={parentRef} className="max-h-[72vh] overflow-auto rounded-lg border border-slate-800 bg-slate-950/40 p-2">
-        <div style={{ height: `${rowVirtualizer.totalSize}px`, position: "relative" }}>
+        <div style={{ height: `${rowVirtualizer.getTotalSize()}px`, position: "relative" }}>
           {virtualRows.map((virtualRow) => {
             const log = logs[virtualRow.index];
             if (!log) {
@@ -25,8 +25,9 @@ export default function LogStream({ logs, selectedIds, onSelect }) {
 
             return (
               <div
-                key={`${log.id}-${log.ts}`}
-                ref={virtualRow.measureRef}
+                key={virtualRow.key}
+                ref={rowVirtualizer.measureElement}
+                data-index={virtualRow.index}
                 style={{
                   position: "absolute",
                   top: 0,

@@ -51,7 +51,7 @@ async function ingestBulk(request, response, next) {
 
     for (const log of logs) {
       await logIngestionService.queueIngestion({
-        sourceId: source.name,
+        sourceId: source.id,
         rawLog: {
           ...log,
           source_name: source.name,
@@ -94,7 +94,7 @@ async function ingestSingle(request, response, next) {
     await logSourceModel.touchSource(source.id);
 
     await logIngestionService.queueIngestion({
-      sourceId: source.name,
+      sourceId: source.id,
       rawLog: {
         ...log,
         source_name: source.name,
@@ -126,7 +126,7 @@ async function uploadFile(request, response, next) {
 
     for (const line of lines) {
       await logIngestionService.queueIngestion({
-        sourceId: source.name,
+        sourceId: source.id,
         rawLog: {
           message: line,
           raw: line,

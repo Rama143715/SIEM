@@ -1,0 +1,391 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] /Count 6 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 509 >>
+stream
+BT
+/F2 24 Tf 1 0 0 1 82.00 575.89 Tm (SOC Platform AI SIEM Complete Guide) Tj
+/F1 10.8 Tf 1 0 0 1 74.00 527.89 Tm (Real-world attack monitoring, log analysis, alerts, incidents, AI Analysis,) Tj
+/F1 10.8 Tf 1 0 0 1 74.00 512.89 Tm (rules, and database access.) Tj
+/F1 9 Tf 1 0 0 1 74.00 490.89 Tm (Generated for project: C:\\Users\\bpava\\OneDrive\\Documents\\New) Tj
+/F1 9 Tf 1 0 0 1 74.00 475.89 Tm (project\\Wazuh-SIEM-Security-Lab\\siem-platform) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 1 of 6) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 4151 >>
+stream
+BT
+/F2 17 Tf 1 0 0 1 54.00 777.89 Tm (1. Platform Overview) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 748.89 Tm (Your SOC Platform AI SIEM is a full-stack security monitoring application. The) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 733.89 Tm (frontend shows Dashboard, Logs, Alerts, Incidents, AI Analysis, Rules, and Settings.) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 718.89 Tm (The backend receives logs, stores records in PostgreSQL, evaluates rules, creates) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 703.89 Tm (alerts, supports incidents, and saves AI analysis history.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 681.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 681.89 Tm (Frontend: React + Vite SOC dashboard.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 665.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 665.89 Tm (Backend: Node.js + Express API.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 649.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 649.89 Tm (Database: PostgreSQL for users, logs, rules, alerts, incidents, AI analyses, and) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 635.89 Tm (audit records.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 619.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 619.89 Tm (Redis: queueing, rate limits, temporary counters, and real-time statistics.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 603.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 603.89 Tm (Detection: pattern, regex, field match, threshold, and correlation rules.) Tj
+/F2 17 Tf 1 0 0 1 54.00 579.89 Tm (2. Start the Platform) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 546.89 Tm (cd "C:\\Users\\bpava\\OneDrive\\Documents\\New project\\Wazuh-SIEM-Security-Lab\\siem-platform") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 534.89 Tm (docker compose up -d postgres redis) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 522.89 Tm (docker compose run --rm backend npm run migrate) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 510.89 Tm (docker compose run --rm backend npm run seed) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 498.89 Tm (docker compose up -d) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 480.89 Tm (Open the application in your browser:) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 458.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 458.89 Tm (Frontend: http://localhost:5173) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 442.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 442.89 Tm (Backend health: http://localhost:3001/health) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 426.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 426.89 Tm (Default admin email: admin@siem.local) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 410.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 410.89 Tm (Default admin password: changeme123) Tj
+/F2 17 Tf 1 0 0 1 54.00 386.89 Tm (3. Prove Real-World Attack Monitoring) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 357.89 Tm (Use the simulator to prove that ingestion, detection, alerting, and dashboard updates) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 342.89 Tm (work end to end.) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 316.89 Tm (.\\tools\\simulate-attacks.ps1) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 298.89 Tm (The simulator logs in to the API, creates missing demo rules, sends attack logs, waits) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 283.89 Tm (for processing, and prints a run id for evidence tracking.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 261.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 261.89 Tm (Brute force login attempts.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 245.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 245.89 Tm (Successful login after repeated failures.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 229.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 229.89 Tm (SQL injection against a web asset.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 213.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 213.89 Tm (Credential dumping indicator from endpoint logs.) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 197.89 Tm (Expected UI proof: Dashboard counters change, Logs page shows the run id, Alerts page) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 182.89 Tm (shows triggered detections, Incidents can link the evidence, and AI Analysis can) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 167.89 Tm (summarize the case.) Tj
+/F2 17 Tf 1 0 0 1 54.00 137.89 Tm (4. Manual Log Ingestion) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 108.89 Tm (Authenticate first and store the JWT token:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 82.89 Tm ($login = Invoke-RestMethod -Method Post -Uri "http://localhost:3001/api/auth/login") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 70.89 Tm (-ContentType "application/json" -Body \(@{) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 2 of 6) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 4047 >>
+stream
+BT
+/F3 8.5 Tf 1 0 0 1 66.00 785.89 Tm (email = "admin@siem.local") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 773.89 Tm (password = "changeme123") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 761.89 Tm (} | ConvertTo-Json\)) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 749.89 Tm () Tj
+/F3 8.5 Tf 1 0 0 1 66.00 737.89 Tm ($token = $login.access_token) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 725.89 Tm ($headers = @{ Authorization = "Bearer $token" }) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 707.89 Tm (Send one SQL injection log:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 681.89 Tm (Invoke-RestMethod -Method Post -Uri "http://localhost:3001/api/logs/ingest/single" -Headers) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 669.89 Tm ($headers -ContentType "application/json" -Body \(@{) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 657.89 Tm (source_api_key = "firewall_demo_key") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 645.89 Tm (log = @{) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 633.89 Tm (severity = "CRITICAL") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 621.89 Tm (category = "web") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 609.89 Tm (message = "WAF blocked SQL injection: /login?id=1 UNION SELECT password FROM users") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 597.89 Tm (ip_src = "198.51.100.77") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 585.89 Tm (ip_dst = "10.0.0.80") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 573.89 Tm (user_name = "anonymous") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 561.89 Tm (host_name = "public-web-01") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 549.89 Tm (}) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 537.89 Tm (} | ConvertTo-Json -Depth 10\)) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 519.89 Tm (Send brute force logs in bulk:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 493.89 Tm ($logs = @\(\)) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 481.89 Tm (for \($i = 1; $i -le 10; $i++\) {) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 469.89 Tm ($logs += @{) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 457.89 Tm (severity = "HIGH") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 445.89 Tm (category = "authentication") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 433.89 Tm (message = "failed login for user admin from 203.0.113.50 attempt=$i") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 421.89 Tm (ip_src = "203.0.113.50") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 409.89 Tm (ip_dst = "10.0.0.25") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 397.89 Tm (user_name = "admin") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 385.89 Tm (host_name = "vpn-gateway-01") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 373.89 Tm (}) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 361.89 Tm (}) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 349.89 Tm () Tj
+/F3 8.5 Tf 1 0 0 1 66.00 337.89 Tm (Invoke-RestMethod -Method Post -Uri "http://localhost:3001/api/logs/ingest" -Headers) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 325.89 Tm ($headers -ContentType "application/json" -Body \(@{) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 313.89 Tm (source_api_key = "firewall_demo_key") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 301.89 Tm (logs = $logs) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 289.89 Tm (} | ConvertTo-Json -Depth 10\)) Tj
+/F2 17 Tf 1 0 0 1 54.00 263.89 Tm (5. How to Analyze Logs) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 234.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 234.89 Tm (Open Logs and filter by severity: CRITICAL and HIGH first.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 218.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 218.89 Tm (Filter by source: firewall-main for network/web logs, endpoint-edr for host logs.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 202.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 202.89 Tm (Search by IOC: attacker IP, username, host name, URL path, payload, or simulator run) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 188.89 Tm (id.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 172.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 172.89 Tm (Review timestamp, source, severity, category, message, ip_src, ip_dst, user_name,) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 158.89 Tm (host_name, and extra_data.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 142.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 142.89 Tm (Decide if the event is true positive, false positive, or needs more evidence.) Tj
+/F2 17 Tf 1 0 0 1 54.00 118.89 Tm (6. Alerts Workflow) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 89.89 Tm (The alert engine evaluates each ingested log against enabled rules. When a rule) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 74.89 Tm (matches, the platform creates or updates an alert and streams it to the frontend.) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 3 of 6) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 4391 >>
+stream
+BT
+/F1 10.5 Tf 1 0 0 1 70.00 785.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 785.89 Tm (pattern: text match against a selected field.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 769.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 769.89 Tm (regex: regular expression match against the message.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 753.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 753.89 Tm (field_match: contains, equals, or regex against any log field.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 737.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 737.89 Tm (threshold: repeated matching events in a time window.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 721.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 721.89 Tm (correlation: suspicious login success after repeated failures from same source and) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 707.89 Tm (user.) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 691.89 Tm (Alert triage steps: open Alerts, review severity/detail/source/log IDs, acknowledge) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 676.89 Tm (the alert, create an incident if confirmed, then resolve only after response is) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 661.89 Tm (complete.) Tj
+/F2 17 Tf 1 0 0 1 54.00 631.89 Tm (7. Incident Workflow) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 602.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 602.89 Tm (Create an incident for confirmed compromise, repeated activity, or multiple related) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 588.89 Tm (alerts.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 572.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 572.89 Tm (Use a clear title such as SQL Injection Attempt Against public-web-01.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 556.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 556.89 Tm (Set severity based on the highest confirmed alert.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 540.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 540.89 Tm (Link alert IDs and log IDs as evidence.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 524.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 524.89 Tm (Add timeline notes for detection, validation, containment, eradication, recovery,) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 510.89 Tm (and closure.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 494.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 494.89 Tm (Close the incident only after evidence and response actions are documented.) Tj
+/F2 17 Tf 1 0 0 1 54.00 470.89 Tm (8. AI Analysis) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 441.89 Tm (AI Analysis supports SOC-style investigation. If ANTHROPIC_API_KEY is empty, the app) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 426.89 Tm (records offline fallback analysis. Add the key in .env and restart backend for real AI) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 411.89 Tm (output.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 389.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 389.89 Tm (triage: prioritize alert handling.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 373.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 373.89 Tm (forensics: reconstruct likely attack chain.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 357.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 357.89 Tm (ioc: extract IPs, users, hosts, URLs, and suspicious strings.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 341.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 341.89 Tm (threat_hunt: recommend additional searches.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 325.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 325.89 Tm (incident: create an incident response summary.) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 305.89 Tm (Example AI input:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 293.89 Tm (Alert: SQL Injection Pattern triggered) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 281.89 Tm (Severity: CRITICAL) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 269.89 Tm (Source: firewall-main) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 257.89 Tm (Log: WAF blocked SQL injection: /login?id=1 UNION SELECT password FROM users) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 245.89 Tm (ip_src: 198.51.100.77) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 233.89 Tm (ip_dst: 10.0.0.80) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 221.89 Tm (host: public-web-01) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 209.89 Tm () Tj
+/F3 8.5 Tf 1 0 0 1 66.00 197.89 Tm (Question: Triage this alert, map MITRE ATT&CK, list IOCs, and recommend response steps.) Tj
+/F2 17 Tf 1 0 0 1 54.00 171.89 Tm (9. Rules) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 142.89 Tm (Rules define how the SIEM detects attacks. Start with a simple rule, test it with) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 127.89 Tm (sample logs, then tune threshold, field, or regex to reduce false positives.) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 105.89 Tm (Seeded rules include Brute Force Login Attempts and SQL Injection Pattern.) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 79.89 Tm (Pattern rule example:) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 4 of 6) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3380 >>
+stream
+BT
+/F3 8.5 Tf 1 0 0 1 66.00 785.89 Tm ({) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 773.89 Tm ("name": "Malware Keyword Detected",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 761.89 Tm ("severity": "HIGH",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 749.89 Tm ("type": "pattern",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 737.89 Tm ("conditions": {) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 725.89 Tm ("field": "message",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 713.89 Tm ("operator": "contains",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 701.89 Tm ("value": "malware detected") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 689.89 Tm (},) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 677.89 Tm ("actions": [{ "type": "create_alert" }],) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 665.89 Tm ("is_enabled": true) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 653.89 Tm (}) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 631.89 Tm (Threshold rule example:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 619.89 Tm ({) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 607.89 Tm ("name": "Password Spray",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 595.89 Tm ("severity": "HIGH",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 583.89 Tm ("type": "threshold",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 571.89 Tm ("conditions": {) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 559.89 Tm ("field": "message",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 547.89 Tm ("operator": "contains",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 535.89 Tm ("value": "failed login",) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 523.89 Tm ("threshold": 10,) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 511.89 Tm ("timeWindowSeconds": 60) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 499.89 Tm (},) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 487.89 Tm ("actions": [{ "type": "create_alert" }],) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 475.89 Tm ("is_enabled": true) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 463.89 Tm (}) Tj
+/F2 17 Tf 1 0 0 1 54.00 437.89 Tm (10. Database Access) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 408.89 Tm (The app stores records in PostgreSQL running inside Docker.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 386.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 386.89 Tm (Database: siem_db) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 370.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 370.89 Tm (User: siem_user) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 354.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 354.89 Tm (Password: POSTGRES_PASSWORD from .env) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 338.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 338.89 Tm (Host from laptop: localhost) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 322.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 322.89 Tm (Port: 5432) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 306.89 Tm (Enter the database terminal:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 280.89 Tm (docker compose exec postgres psql -U siem_user -d siem_db) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 262.89 Tm (Show tables inside PostgreSQL:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 236.89 Tm (\\dt) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 218.89 Tm (Show records:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 192.89 Tm (SELECT * FROM users;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 180.89 Tm (SELECT * FROM log_sources;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 168.89 Tm (SELECT * FROM logs ORDER BY ts DESC LIMIT 20;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 156.89 Tm (SELECT * FROM alerts ORDER BY created_at DESC LIMIT 20;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 144.89 Tm (SELECT * FROM incidents ORDER BY created_at DESC LIMIT 20;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 132.89 Tm (SELECT * FROM rules ORDER BY created_at DESC;) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 120.89 Tm (SELECT * FROM ai_analyses ORDER BY created_at DESC LIMIT 10;) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 102.89 Tm (Exit PostgreSQL:) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 76.89 Tm (\\q) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 5 of 6) Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 3751 >>
+stream
+BT
+/F2 17 Tf 1 0 0 1 54.00 777.89 Tm (11. Useful One-Line Database Commands) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 744.89 Tm (docker compose exec -T postgres psql -U siem_user -d siem_db -c "SELECT id, ts, severity,) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 732.89 Tm (source_name, category, message, ip_src, user_name, host_name FROM logs ORDER BY ts DESC) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 720.89 Tm (LIMIT 20;") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 698.89 Tm (docker compose exec -T postgres psql -U siem_user -d siem_db -c "SELECT id, title,) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 686.89 Tm (severity, status, source_name, occurrence, created_at FROM alerts ORDER BY created_at DESC) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 674.89 Tm (LIMIT 20;") Tj
+/F3 8.5 Tf 1 0 0 1 66.00 652.89 Tm (docker compose exec -T postgres psql -U siem_user -d siem_db -c "SELECT id, name, severity,) Tj
+/F3 8.5 Tf 1 0 0 1 66.00 640.89 Tm (type, is_enabled, mitre_tactic, mitre_tech FROM rules ORDER BY created_at DESC;") Tj
+/F2 17 Tf 1 0 0 1 54.00 614.89 Tm (12. How the Database Works) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 585.89 Tm (Frontend UI sends requests to the Backend API. The backend validates input, applies) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 570.89 Tm (authentication and role checks, then writes or reads records from PostgreSQL. Redis) Tj
+/F1 10.8 Tf 1 0 0 1 54.00 555.89 Tm (assists with queueing, rate limits, and temporary dashboard counters.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 533.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 533.89 Tm (users: login accounts and roles.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 517.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 517.89 Tm (log_sources: firewall/endpoint source identities and hashed API keys.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 501.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 501.89 Tm (logs: raw and normalized SIEM events.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 485.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 485.89 Tm (rules: detection logic.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 469.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 469.89 Tm (alerts: detections generated from matching rules.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 453.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 453.89 Tm (incidents: SOC cases created from alerts/logs.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 437.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 437.89 Tm (ai_analyses: saved AI outputs and offline fallback records.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 421.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 421.89 Tm (audit_log: important admin and analyst actions.) Tj
+/F2 17 Tf 1 0 0 1 54.00 397.89 Tm (13. Evidence Checklist for Final Demo) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 368.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 368.89 Tm (Dashboard before and after simulation.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 352.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 352.89 Tm (Simulator terminal output with accepted logs and run id.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 336.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 336.89 Tm (Logs page filtered by the run id.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 320.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 320.89 Tm (Alerts page showing triggered detections.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 304.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 304.89 Tm (Alert acknowledgement screenshot.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 288.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 288.89 Tm (Incident with linked alert/log evidence and timeline.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 272.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 272.89 Tm (AI Analysis output for selected alert or incident evidence.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 256.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 256.89 Tm (Rules page showing enabled detection logic.) Tj
+/F1 10.5 Tf 1 0 0 1 70.00 240.89 Tm (-) Tj
+/F1 10.5 Tf 1 0 0 1 82.00 240.89 Tm (Database terminal showing rows in logs, alerts, incidents, rules, and ai_analyses.) Tj
+ET
+BT
+/F1 8 Tf 1 0 0 1 255.64 28 Tm (Page 6 of 6) Tj
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 16 0 R >>
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000155 00000 n 
+0000000225 00000 n 
+0000000300 00000 n 
+0000000368 00000 n 
+0000000928 00000 n 
+0000001080 00000 n 
+0000005283 00000 n 
+0000005435 00000 n 
+0000009535 00000 n 
+0000009689 00000 n 
+0000014133 00000 n 
+0000014287 00000 n 
+0000017720 00000 n 
+0000017874 00000 n 
+0000021678 00000 n 
+trailer
+<< /Size 18 /Root 1 0 R >>
+startxref
+21832
+%%EOF

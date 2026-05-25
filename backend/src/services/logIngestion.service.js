@@ -162,10 +162,11 @@ async function start() {
 
   ingestionQueue.process(async (job) => {
     const { sourceId, rawLog, receivedAt } = job.data;
+    const sourceName = rawLog?.source_name || sourceId || "queue";
 
     await ingest({
       source_id: sourceId || null,
-      source_name: sourceId || "queue",
+      source_name: sourceName,
       message: rawLog.message || rawLog.raw || "",
       raw_log: rawLog.raw || rawLog.raw_log || null,
       severity: rawLog.severity || "INFO",
@@ -180,7 +181,7 @@ async function start() {
         receivedAt,
       },
       ts: rawLog.ts || new Date(),
-    }, sourceId || "queue");
+    }, sourceName);
   });
 }
 

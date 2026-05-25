@@ -36,6 +36,30 @@ const useAuthStore = create((set) => ({
     }
   },
 
+  updateProfile: async ({ email, full_name }) => {
+    set({ loading: true });
+    try {
+      const { data } = await api.patch("/auth/profile", { email, full_name });
+      set({ user: data.user || null, loading: false });
+      return { ok: true };
+    } catch (error) {
+      set({ loading: false });
+      return { ok: false, error: error.response?.data?.error || "Profile update failed." };
+    }
+  },
+
+  changePassword: async ({ current_password, new_password }) => {
+    set({ loading: true });
+    try {
+      const { data } = await api.patch("/auth/password", { current_password, new_password });
+      set({ user: data.user || null, loading: false });
+      return { ok: true };
+    } catch (error) {
+      set({ loading: false });
+      return { ok: false, error: error.response?.data?.error || "Password change failed." };
+    }
+  },
+
   logout: async () => {
     try {
       await api.post("/auth/logout");
